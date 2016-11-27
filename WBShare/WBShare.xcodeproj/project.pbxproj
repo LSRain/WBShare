@@ -434,7 +434,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/WBShare/UMSocial/SocialLibraries/Sina",
 				);
-				OTHER_LDFLAGS = "-Objc";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lsrain.WBShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -454,7 +454,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/WBShare/UMSocial/SocialLibraries/Sina",
 				);
-				OTHER_LDFLAGS = "-Objc";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lsrain.WBShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -479,6 +479,7 @@
 				514F2F631DEAD2F200846163 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

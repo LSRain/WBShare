@@ -7,17 +7,62 @@
 //
 
 #import "AppDelegate.h"
+#import <UMSocialCore/UMSocialCore.h>
+
 
 @interface AppDelegate ()
 
 @end
+
+/*!
+ 出于账号安全考虑，此处没有给出对应的key
+ 使用前，请自己获取一个友盟的appKey、新浪appKey、以及appSecret
+ 并在下列进行设置
+ */
+/////////////////////////////////////////////////////////////////////////////
+//使用前设置key--start
+/////////////////////////////////////////////////////////////////////////////
+
+/// 友盟appkey
+NSString *wbUAppKey = @"";
+/// 新浪的appKey
+NSString *wbSAppKey = @"";
+/// appSecret
+NSString *wbSAppSecret = @"";
+
+/////////////////////////////////////////////////////////////////////////////
+//使用前设置key--end
+/////////////////////////////////////////////////////////////////////////////
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //打开调试日志
+    [[UMSocialManager defaultManager] openLog:YES];
+    
+    //设置友盟appkey
+    [[UMSocialManager defaultManager] setUmSocialAppkey:wbUAppKey];
+    
+    // 获取友盟social版本号
+    //NSLog(@"UMeng social version: %@", [UMSocialGlobal umSocialSDKVersion]);
+    
+    //设置新浪的appKey和appSecret
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:wbSAppKey  appSecret:wbSAppSecret redirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    
     return YES;
+}
+
+// SDK回调
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+    if (!result) {
+        // 其他如支付等SDK的回调
+    }
+    return result;
 }
 
 
